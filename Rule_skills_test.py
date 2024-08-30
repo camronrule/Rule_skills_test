@@ -8,10 +8,10 @@ from PIL import Image, ImageDraw # draw on PNGs
 def main():
 
     #Ensure that input PNGs can be overwritten
-    print('-WARNING-')
+    print('\n-WARNING-')
     print('The output from this script will overwrite the original PNGs, placing the highlighted squares on the input PNGs')
     print('Is this ok? Y/N')
-    if input().capitalize() is not 'Y':
+    if input().capitalize() != 'Y':
         return
     
     #Find all file names ending with .xml in this directory
