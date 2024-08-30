@@ -1,7 +1,19 @@
+# Camron Rule
+# Fall 2024
+# Software Engineering programming assignment 1
+
 import glob # pull file names
 from PIL import Image, ImageDraw # draw on PNGs
 
 def main():
+
+    #Ensure that input PNGs can be overwritten
+    print('-WARNING-')
+    print('The output from this script will overwrite the original PNGs, placing the highlighted squares on the input PNGs')
+    print('Is this ok? Y/N')
+    if input().capitalize() is not 'Y':
+        exit()
+    
     #Find all file names ending with .xml in this directory
     files = []
     for f in glob.glob("*.xml"):
