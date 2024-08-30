@@ -12,7 +12,7 @@ def main():
     print('The output from this script will overwrite the original PNGs, placing the highlighted squares on the input PNGs')
     print('Is this ok? Y/N')
     if input().capitalize() is not 'Y':
-        exit()
+        return
     
     #Find all file names ending with .xml in this directory
     files = []
@@ -33,7 +33,7 @@ def main():
 
                 t = t.split('<node')[-1]
 
-                if 'bounds' in t:             
+                if 'bounds' in t:           
                     #isolates the bounds of the leaf node
                     #trims the string into 4 tuple of (0,1,2,3)
                     t = t.split('bounds=')
@@ -41,6 +41,7 @@ def main():
                     else: t = t[1]
                     bounds.append(eval(t.split('"')[1].replace('][', ',').strip('[]')))    
 
+        #print the coordinates of leaf nodes that were found
         print(bounds)
 
         # https://www.geeksforgeeks.org/python-pillow-imagedraw-module/
@@ -50,9 +51,9 @@ def main():
 
         for bound in bounds:
 
-            SKIP = False
-            DOT_WIDTH = 10
-            LINE_WIDTH = 10
+            SKIP = False #boolean that switches on each line draw, to create a dotted effect
+            DOT_WIDTH = 10 #size of the spacing between each dot on the dotted line
+            LINE_WIDTH = 10 #size of the pen to draw the dotted line
 
             x_cur = bound[0]
             y_cur = bound[1]
@@ -78,6 +79,7 @@ def main():
                     draw.line((x_cur, y_cur, x_cur, y_cur+DOT_WIDTH), width=LINE_WIDTH, fill='yellow')
                     draw.line((x_end, y_cur, x_end, y_cur+DOT_WIDTH), width=LINE_WIDTH, fill='yellow')  
                 y_cur += DOT_WIDTH
+                
         img.show()
         img.save(img_name)
 
