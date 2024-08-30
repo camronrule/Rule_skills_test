@@ -4,22 +4,33 @@
 
 import glob # pull file names
 from PIL import Image, ImageDraw # draw on PNGs
+import os
+
+def createDirectories():
+    if not os.path.isdir('input'):
+        raise NotADirectoryError('No input directory found')
+
+    #Deal with input/output folders
+    if not os.path.isdir('output'):
+        os.mkdir('output')
+
+    else: # if output folder exists, remove all files in it
+        output_files = glob.glob('/output/*')
+        for f in output_files:
+            os.remove(f)
 
 def main():
 
-    #Ensure that input PNGs can be overwritten
-    print('\n-WARNING-')
-    print('The output from this script will overwrite the original PNGs, placing the highlighted squares on the input PNGs')
-    print('Is this ok? Y/N')
-    if input().capitalize() != 'Y':
-        return
-    
-    #Find all file names ending with .xml in this directory
+    createDirectories()
+
+    #Find all file names ending with .xml in ./input/
     files = []
-    for f in glob.glob("*.xml"):
+    for f in glob.glob("input\\*.xml"):
         files.append(f)
 
-    #For each .xml file
+    print(files)
+
+    #For each .xml file in ./input/
         #split on '/>'    -> cut off at the end of each leaf node
         #split on '<node' -> isolate this leaf node from its parents
         #check if 'bounds' is in the string to avoid the closing tags causing problems
@@ -81,7 +92,7 @@ def main():
                 y_cur += DOT_WIDTH
                 
         img.show()
-        img.save(img_name)
+        img.save('output\\'+img_name.strip('\\input')) # save changed image into output folder
 
 if __name__ == "__main__":
     main()

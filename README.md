@@ -3,11 +3,11 @@ Software Engineering programming assignment 1
 
 # Description
 
-When given a set of PNG/XML file pairs, this Python script will highlight leaf level UI components specified in the XML file with a dotted yellow line. Designed with XML files captured from android using the dump feature of the uiautomator framework in Android. The output PNG overwrites the input PNG. Store the input PNGs outside of the current working directory if the original copies are needed.
+When given a set of PNG/XML file pairs, this Python script will highlight leaf level UI components specified in the XML file with a dotted yellow line. Designed with XML files captured from android using the dump feature of the uiautomator framework in Android. Input data is placed into the `/input/` directory. The output PNGs are placed into the `/output/` directory. 
 
 # To Run
 
-No external dependencies required. Makes use of the Python Pillow library to modify images. Place the script Rule_skills_test.py into the same directory as the data, and run with `py Rule_skills_test.py`
+No external dependencies required. Makes use of the Python Pillow library to modify images. Place XML/PNG pairs into `/input/`. Run with `py Rule_skills_test.py`. 
 
 # Reasoning
 
