@@ -10,13 +10,19 @@ When given a set of PNG/XML file pairs, this Python script will highlight leaf l
 Requires [Pillow](https://pillow.readthedocs.io/en/stable/), which should be installed by default on most Linux distributions. 
 
 To install pillow,
->`pip install Pillow`
+```
+pip install Pillow
+```
 
 Place XML/PNG pairs into `/input/`. Run on Mac or Linux with 
->`python3 Rule_skills_test.py` 
+```
+python3 Rule_skills_test.py
+``` 
 
 If on Windows, use 
->`py Rule_skills_test.py`
+```
+py Rule_skills_test.py
+```
 
 ## Reasoning
 
