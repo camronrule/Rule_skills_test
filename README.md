@@ -7,7 +7,16 @@ When given a set of PNG/XML file pairs, this Python script will highlight leaf l
 
 ## To Run
 
-No external dependencies required. Makes use of the Python Pillow library to modify images. Place XML/PNG pairs into `/input/`. Run with `py Rule_skills_test.py`. 
+Requires [Pillow](https://pillow.readthedocs.io/en/stable/), which should be installed by default on most Linux distributions. 
+
+To install pillow,
+>`pip install Pillow`
+
+Place XML/PNG pairs into `/input/`. Run on Mac or Linux with 
+>`python3 Rule_skills_test.py` 
+
+If on Windows, use 
+>`py Rule_skills_test.py`
 
 ## Reasoning
 

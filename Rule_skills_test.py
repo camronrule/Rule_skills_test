@@ -3,8 +3,21 @@
 # Software Engineering programming assignment 1
 
 import glob # pull file names
-from PIL import Image, ImageDraw # draw on PNGs
 import os # check on dirs
+
+# to install Pillow if not already installed
+import sys
+import subprocess
+
+def checkPillowInstalled():
+    try:
+        from PIL import Image, ImageDraw # draw on PNGs
+        print('Pillow module found\n')
+    except:
+        print('Pillow not installed... installing with pip\n')
+        python = sys.executable
+        subprocess.check_call([python, '-m', 'pip', 'install', 'Pillow'])
+
 
 
 def createDirectories():
@@ -84,11 +97,13 @@ def drawDottedRectangle(bound, img, draw):
 
 def main():
 
+    checkPillowInstalled()
+
     createDirectories()
 
     #Find all file names ending with .xml in ./input/
     files = []
-    for f in glob.glob("input\\*.xml"):
+    for f in glob.glob("input/*.xml"):
         files.append(f)
 
     print('Files found:{}'.format(files))
@@ -105,8 +120,8 @@ def main():
         for bound in bounds:
             drawDottedRectangle(bound, img, draw)
 
-        img.show()
-        img.save('output\\'+img_name.strip('\\input')) # save changed image into output folder
+        #img.show()
+        img.save('output/'+img_name.strip('/input')) # save changed image into output folder
 
 
 
